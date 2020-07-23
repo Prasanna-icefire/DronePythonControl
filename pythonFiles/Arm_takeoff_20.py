@@ -42,7 +42,7 @@ def arm_and_takeoff(aTargetAltitude):
             vehicle.armed   = True
             time.sleep(0.5)
             print("Arming Re-ried")
-            time.sleep(0.5)
+            time.sleep(2)
 
         print ("Taking off!")
         vehicle.simple_takeoff(aTargetAltitude) # Take off to target altitude
@@ -79,10 +79,10 @@ def set_velocity_body(Vx, Vy, Vz):
 def movements():
     def forward():
         counter = 0
-        while counter<3:
-            print("Moving Forward")
+        while counter<2:
+            print("Moving Forward for 2 seconds")
             set_velocity_body(1,0,0)
-            time.sleep(3)
+            time.sleep(1)
             counter=counter+1
     if vehicle.armed == False:
         print("Vehicle Disarmed")   
@@ -101,7 +101,7 @@ def landAndDisarm():
                 GPIO.cleanup()
                 exit()
         #Break and return from function just below target altitude.
-        if vehicle.location.global_relative_frame.alt<=0.1:
+        if vehicle.location.global_relative_frame.alt<=0.05:
             print ("Landed")
             time.sleep(10)
             print("Disarming Motors")
@@ -133,7 +133,7 @@ time.sleep(1)
 
 if __name__ == '__main__':
     try:
-        arm_and_takeoff(2)
+        arm_and_takeoff(1.5)
         movements()
         landAndDisarm()
         print("Mission Successful")

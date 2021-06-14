@@ -25,6 +25,6 @@ rosdep install --from-paths src --ignore-src -y
 
 sudo ./src/mavros/mavros/scripts/install_geographiclib_datasets.sh
 
-catkin build
+catkin build -j1
 
 Installing this on piOS is not possible at present!
